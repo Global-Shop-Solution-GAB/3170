@@ -1,0 +1,596 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Cost of Sales")
+gui.SS_Form1..size(6160,5525)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_dtpFrom.create(label,"From",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpFrom.create(datepicker)
+gui.SS_Form1.dtpFrom.visible(True)
+gui.SS_Form1.dtpFrom.size(1800,345)
+gui.SS_Form1.dtpFrom.zorder(0)
+gui.SS_Form1.dtpFrom.position(100,335)
+gui.SS_Form1.dtpFrom.enabled(True)
+gui.SS_Form1.dtpFrom.checkbox(False)
+gui.SS_Form1.lbl_dtpTo.create(label,"To",True,1800,200,1,1985,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpTo.create(datepicker)
+gui.SS_Form1.dtpTo.visible(True)
+gui.SS_Form1.dtpTo.size(1800,345)
+gui.SS_Form1.dtpTo.zorder(0)
+gui.SS_Form1.dtpTo.position(1985,335)
+gui.SS_Form1.dtpTo.enabled(True)
+gui.SS_Form1.dtpTo.checkbox(False)
+gui.SS_Form1.lbl_txtFrom.create(label,"From",True,1800,200,1,100,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtFrom.create(textbox,"",True,1800,330,0,100,1050,True,0,Arial,8,16777215,1)
+gui.SS_Form1.cmd_txtFrom.create(button)
+gui.SS_Form1.cmd_txtFrom.caption("^")
+gui.SS_Form1.cmd_txtFrom.visible(True)
+gui.SS_Form1.cmd_txtFrom.size(330,330)
+gui.SS_Form1.cmd_txtFrom.zorder(0)
+gui.SS_Form1.cmd_txtFrom.position(1985,1050)
+gui.SS_Form1.cmd_txtFrom.enabled(True)
+gui.SS_Form1.cmd_txtFrom.fontname("Arial")
+gui.SS_Form1.cmd_txtFrom.fontsize(8)
+gui.SS_Form1.cmd_txtFrom.event(click,browser_from_click)
+gui.SS_Form1.lbl_txtTo.create(label,"To",True,1800,200,1,2455,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtTo.create(textbox,"",True,1800,330,0,2455,1050,True,0,Arial,8,16777215,1)
+gui.SS_Form1.cmd_txtTo.create(button)
+gui.SS_Form1.cmd_txtTo.caption("^")
+gui.SS_Form1.cmd_txtTo.visible(True)
+gui.SS_Form1.cmd_txtTo.size(330,330)
+gui.SS_Form1.cmd_txtTo.zorder(0)
+gui.SS_Form1.cmd_txtTo.position(4340,1050)
+gui.SS_Form1.cmd_txtTo.enabled(True)
+gui.SS_Form1.cmd_txtTo.fontname("Arial")
+gui.SS_Form1.cmd_txtTo.fontsize(8)
+gui.SS_Form1.cmd_txtTo.event(click,browser_to_click)
+gui.SS_Form1.lvwGrid.create(listview)
+gui.SS_Form1.lvwGrid.view(3)
+gui.SS_Form1.lvwGrid.addlistviewcolumn("Key",15,0)
+gui.SS_Form1.lvwGrid.addlistviewcolumn("From",2705,0)
+gui.SS_Form1.lvwGrid.addlistviewcolumn("To",2705,0)
+gui.SS_Form1.lvwGrid.visible(True)
+gui.SS_Form1.lvwGrid.size(5810,2000)
+gui.SS_Form1.lvwGrid.zorder(0)
+gui.SS_Form1.lvwGrid.position(100,1550)
+gui.SS_Form1.lvwGrid.enabled(True)
+gui.SS_Form1.lvwGrid.fontname("Arial")
+gui.SS_Form1.lvwGrid.fontsize(8)
+gui.SS_Form1.lvwGrid.event(itemclick,lvwgrid_itemclick)
+gui.SS_Form1.cmd_lvwGridAdd.create(button)
+gui.SS_Form1.cmd_lvwGridAdd.caption("Add")
+gui.SS_Form1.cmd_lvwGridAdd.visible(True)
+gui.SS_Form1.cmd_lvwGridAdd.size(1000,330)
+gui.SS_Form1.cmd_lvwGridAdd.zorder(0)
+gui.SS_Form1.cmd_lvwGridAdd.position(4810,1050)
+gui.SS_Form1.cmd_lvwGridAdd.enabled(True)
+gui.SS_Form1.cmd_lvwGridAdd.fontname("Arial")
+gui.SS_Form1.cmd_lvwGridAdd.fontsize(8)
+gui.SS_Form1.cmd_lvwGridAdd.event(click,add_click)
+gui.SS_Form1.cmd_lvwGridDelete.create(button)
+gui.SS_Form1.cmd_lvwGridDelete.caption("Delete")
+gui.SS_Form1.cmd_lvwGridDelete.visible(True)
+gui.SS_Form1.cmd_lvwGridDelete.size(1000,330)
+gui.SS_Form1.cmd_lvwGridDelete.zorder(0)
+gui.SS_Form1.cmd_lvwGridDelete.position(100,3635)
+gui.SS_Form1.cmd_lvwGridDelete.enabled(True)
+gui.SS_Form1.cmd_lvwGridDelete.fontname("Arial")
+gui.SS_Form1.cmd_lvwGridDelete.fontsize(8)
+gui.SS_Form1.cmd_lvwGridDelete.event(click,delete_click)
+gui.SS_Form1.cmd_lvwGridClear.create(button)
+gui.SS_Form1.cmd_lvwGridClear.caption("Clear")
+gui.SS_Form1.cmd_lvwGridClear.visible(True)
+gui.SS_Form1.cmd_lvwGridClear.size(1000,330)
+gui.SS_Form1.cmd_lvwGridClear.zorder(0)
+gui.SS_Form1.cmd_lvwGridClear.position(1185,3635)
+gui.SS_Form1.cmd_lvwGridClear.enabled(True)
+gui.SS_Form1.cmd_lvwGridClear.fontname("Arial")
+gui.SS_Form1.cmd_lvwGridClear.fontsize(8)
+gui.SS_Form1.cmd_lvwGridClear.event(click,clear_click)
+gui.SS_Form1.chkAll.create(checkbox)
+gui.SS_Form1.chkAll.caption("All Customers")
+gui.SS_Form1.chkAll.visible(True)
+gui.SS_Form1.chkAll.size(1800,300)
+gui.SS_Form1.chkAll.zorder(0)
+gui.SS_Form1.chkAll.position(100,4165)
+gui.SS_Form1.chkAll.enabled(True)
+gui.SS_Form1.chkAll.alignment(0)
+gui.SS_Form1.chkAll.fontname("Arial")
+gui.SS_Form1.chkAll.fontsize(8)
+gui.SS_Form1.chkAll.event(click,Enable)
+gui.SS_Form1.cmdOk.create(button)
+gui.SS_Form1.cmdOk.caption("Submit")
+gui.SS_Form1.cmdOk.visible(True)
+gui.SS_Form1.cmdOk.size(1000,360)
+gui.SS_Form1.cmdOk.zorder(0)
+gui.SS_Form1.cmdOk.position(100,4550)
+gui.SS_Form1.cmdOk.enabled(True)
+gui.SS_Form1.cmdOk.fontname("Arial")
+gui.SS_Form1.cmdOk.fontsize(8)
+gui.SS_Form1.cmdOk.event(click,ok_click)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.iKey.Declare(Long,0)
+Variable.Global.iOrdinal.Declare(Long,0)
+Variable.Global.sKey.Declare(String)
+Variable.UDT.uCustomer.Define("Customer",String,CUSTOMER)
+Variable.UDT.uCustomer.Define("Name_Customer",String,NAME_CUSTOMER)
+Variable.uGlobal.uCustomer.Declare("uCustomer")
+Variable.UDT.uReport.Define("Terminal",String,TERMINAL)
+Variable.UDT.uReport.Define("Customer",String,CUSTOMER)
+Variable.UDT.uReport.Define("Name_Customer",String,NAME_CUSTOMER)
+Variable.UDT.uReport.Define("Order_No",String,ORDER_NO)
+Variable.UDT.uReport.Define("Order_Suffix",String,ORDER_SUFFIX)
+Variable.UDT.uReport.Define("Order_Line",String,ORDER_LINE)
+Variable.UDT.uReport.Define("Part",String,PART)
+Variable.UDT.uReport.Define("Location",String,LOCATION)
+Variable.UDT.uReport.Define("Description",String,DESCRIPTION)
+Variable.UDT.uReport.Define("Sales",Float,SALES)
+Variable.UDT.uReport.Define("Material",Float,AMT_MATERIAL)
+Variable.UDT.uReport.Define("Labor",Float,AMT_LABOR)
+Variable.UDT.uReport.Define("Overhead",Float,AMT_OVERHEAD)
+Variable.uGlobal.uReport.Declare("uReport")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'ERM
+'Quote 2738
+'Custom menu item
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+'Gui.SS_Form1.dtpFrom.Value("05/01/2011")
+'Gui.SS_Form1.dtpTo.Value("05/31/2011")
+Gui.SS_Form1..Show
+
+
+Program.Sub.Main.End
+
+Program.Sub.Unload.Start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+
+Program.Sub.Unload.End
+
+program.sub.browser_from_click.start
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtFrom.Text(V.Local.sRet.Trim)
+	Gui.SS_Form1.txtTo.Text(V.Local.sRet.Trim)
+F.Intrinsic.Control.EndIf
+
+program.sub.browser_from_click.end
+
+program.sub.browser_to_click.start
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtTo.Text(V.Local.sRet.Trim)
+F.Intrinsic.Control.EndIf
+
+program.sub.browser_to_click.end
+
+program.sub.add_click.start
+V.Local.sBegPart.Declare(String)
+V.Local.sEndPart.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtFrom.Text,=,"")
+	F.Intrinsic.UI.Msgbox("Select a beginning Customer","Error Message")
+	Gui.SS_Form1.txtFrom.SetFocus
+F.Intrinsic.Control.ElseIf(V.Screen.SS_Form1!txtTo.Text,=,"")
+	F.Intrinsic.UI.Msgbox("Select a ending part Customer","Error Message")
+	Gui.SS_Form1.txtTo.SetFocus
+F.Intrinsic.Control.ElseIf(V.Screen.SS_Form1!txtFrom.Text,>,V.Screen.SS_Form1!txtTo.Text)
+		F.Intrinsic.UI.Msgbox("Invalid Customer range.","Error Message")
+F.Intrinsic.Control.Else
+	F.Intrinsic.Math.Add(V.Global.iKey,1,V.Global.iKey)
+	Gui.SS_Form1.lvwGrid.AddListItem(V.Global.iKey,V.Global.iKey)
+	Gui.SS_Form1.lvwGrid.SetListItemSubItemText(V.Global.iKey,1,V.Screen.SS_Form1!txtFrom.Text)
+	Gui.SS_Form1.lvwGrid.SetListItemSubItemText(V.Global.iKey,2,V.Screen.SS_Form1!txtTo.Text)
+F.Intrinsic.Control.EndIf
+
+Gui.SS_Form1.txtFrom.Text("")
+Gui.SS_Form1.txtTo.Text("")
+
+program.sub.add_click.end
+
+program.sub.delete_click.start
+V.Local.sRet.Declare(Long)
+
+'Deletes highlighted part range in listview box
+Gui.SS_Form1.lvwGrid.RetrieveItemOrdinal(V.Global.sKey,V.Global.iOrdinal)
+Gui.SS_Form1.lvwGrid.RemoveItem(V.Global.sKey)
+V.Global.sKey.Set("")
+
+program.sub.delete_click.end
+
+program.sub.clear_click.start
+Gui.SS_Form1.lvwGrid.ClearItems
+
+program.sub.clear_click.end
+
+program.sub.ok_click.start
+V.Local.sSQL.Declare(String)
+
+'F.Intrinsic.Debug.InvokeDebugger
+'F.Intrinsic.Debug.Stop
+F.Intrinsic.String.Concat("Delete GCG_3170_Cost_Sales Where Terminal = '",V.Caller.Terminal,"'",V.Local.sSQL)
+F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chkAll.Value,=,1)
+	F.Intrinsic.Control.CallSub(All_customers)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.CallSub(Range)
+F.Intrinsic.Control.Endif
+
+'F.Intrinsic.Control.CallSub(Unload)
+
+
+
+program.sub.ok_click.end
+
+program.sub.lvwgrid_itemclick.start
+V.Global.sKey.Set(V.Args.ItemKey)
+
+program.sub.lvwgrid_itemclick.end
+
+Program.Sub.All_Customers.Start
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.iUB.Declare(Long)
+V.Local.sPart.Declare(String)
+V.Local.iPart.Declare(Long)
+
+V.Local.iUB.Set(-1)
+V.uGlobal.uCustomer.Redim(-1,-1)
+V.uGlobal.uReport.Redim(-1,-1)
+F.Intrinsic.UI.InvokeWaitDialog("Loading Customer Data...","Please wait...")
+F.Intrinsic.String.Concat("Select * From V_Order_Hist_Line Where Date_Invoice Between '",V.Screen.SS_Form1!dtpFrom.Value.pervasivedate,"' and '",V.Screen.SS_Form1!dtpTo.Value.pervasivedate,"' Order By Order_No",V.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Debug.Stop
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+		F.Intrinsic.Control.If(V.uGlobal.uReport.UBound,=,-1)
+			V.uGlobal.uReport.Redim(0,0)
+			V.uGlobal.uReport!Terminal.Set(V.Caller.Terminal)
+			V.uGlobal.uReport!Customer.Set(V.ODBC.con!rst.FieldValTrim!CUSTOMER)
+			F.Intrinsic.String.Concat("Select Name_Customer From V_Order_Hist_Head Where Customer = '",V.ODBC.con!rst.FieldValTrim!Customer,"' and Order_No = '",V.ODBC.con!rst.FieldValTrim!Order_No,"' and Order_Suffix = '",V.ODBC.con!rst.FieldValTrim!Order_Suffix,"'",V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstCustName",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rstCustName.EOF,=,False)
+				V.uGlobal.uReport!Name_Customer.Set(V.ODBC.con!rstCustName.FieldValTrim!NAME_CUSTOMER)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstCustName.Close
+			V.uGlobal.uReport!Order_No.Set(V.ODBC.con!rst.FieldValTrim!ORDER_NO)
+			V.uGlobal.uReport!Order_Suffix.Set(V.ODBC.con!rst.FieldValTrim!ORDER_SUFFIX)
+			V.uGlobal.uReport!Order_Line.Set(V.ODBC.con!rst.FieldValTrim!ORDER_LINE)
+			V.uGlobal.uReport!Part.Set(V.ODBC.con!rst.FieldValTrim!PART)
+			V.uGlobal.uReport!Location.Set(V.ODBC.con!rst.FieldValTrim!LOCATION)
+			V.uGlobal.uReport!Description.Set(V.ODBC.con!rst.FieldValTrim!DESCRIPTION)
+			V.uGlobal.uReport!Sales.Set(V.ODBC.con!rst.FieldValFloat!EXTENSION)
+			V.Local.sPart.Set(V.ODBC.con!rst.FieldValTrim!PART)
+			F.Intrinsic.String.Instr(V.Local.sPart,"'",V.Local.iPart)
+			F.Intrinsic.Control.If(V.Local.iPart,>=,1)
+				F.Intrinsic.String.Replace(V.Local.sPart,"'","''",V.Local.sPart)
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.String.Concat("Select * From V_JOB_HEADER Where Part = '",v.Local.sPart,"' and Location = '",v.ODBC.con!rst.FieldValTrim!Location,"' and Date_Closed between '",V.Screen.SS_Form1!dtpFrom.Value.pervasivedate,"' and '",V.Screen.SS_Form1!dtpTo.Value.pervasivedate,"' and qty_completed <> 0 Order By DATE_CLOSED Desc",V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstJOBHIST",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rstJOBHIST.EOF,=,False)
+				F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_MATERIAL,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport!Material)
+				F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_LABOR,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport!Labor)
+				F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_OVERHEAD,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport!Overhead)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.String.Concat("Select * From V_Inventory_Mstr Where Part = '",V.Local.sPart,"' and Location = '",V.ODBC.con!rst.FieldValTrim!Location,"'",V.Local.sSQL)
+				F.ODBC.Connection!con.OpenRecordsetRO("rstINVMAST",V.Local.sSQL)
+				F.Intrinsic.Control.If(V.ODBC.con!rstINVMAST.EOF,=,False)
+					V.uGlobal.uReport!Material.Set(V.ODBC.con!rstINVMAST.FieldValFloat!AMT_COST)
+					V.uGlobal.uReport!Labor.Set(0)
+					V.uGlobal.uReport!Overhead.Set(0)
+				F.Intrinsic.Control.EndIf
+				F.ODBC.con!rstINVMAST.Close
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstJOBHIST.Close
+		F.Intrinsic.Control.Else
+			V.Local.iUB.Set(V.uGlobal.uReport.UBound)
+			F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+			V.uGlobal.uReport.RedimPreserve(V.uGlobal.uReport.LBound,V.Local.iUB)
+			V.uGlobal.uReport(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+			V.uGlobal.uReport(V.Local.iUB)!Customer.Set(V.ODBC.con!rst.FieldValTrim!CUSTOMER)
+			F.Intrinsic.String.Concat("Select Name_Customer From V_Order_Hist_Head Where Customer = '",V.ODBC.con!rst.FieldValTrim!Customer,"' and Order_No = '",V.ODBC.con!rst.FieldValTrim!Order_No,"' and Order_Suffix = '",V.ODBC.con!rst.FieldValTrim!Order_Suffix,"'",V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstCustName",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rstCustName.EOF,=,False)
+				V.uGlobal.uReport(v.Local.iUB)!Name_Customer.Set(V.ODBC.con!rstCustName.FieldValTrim!NAME_CUSTOMER)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstCustName.Close
+			V.uGlobal.uReport(V.Local.iUB)!Order_No.Set(V.ODBC.con!rst.FieldValTrim!ORDER_NO)
+			V.uGlobal.uReport(V.Local.iUB)!Order_Suffix.Set(V.ODBC.con!rst.FieldValTrim!ORDER_SUFFIX)
+			V.uGlobal.uReport(V.Local.iUB)!Order_Line.Set(V.ODBC.con!rst.FieldValTrim!ORDER_LINE)
+			V.uGlobal.uReport(V.Local.iUB)!Part.Set(V.ODBC.con!rst.FieldValTrim!PART)
+			V.uGlobal.uReport(v.Local.iUB)!Location.Set(V.ODBC.con!rst.FieldValTrim!LOCATION)
+			V.uGlobal.uReport(V.Local.iUB)!Description.Set(V.ODBC.con!rst.FieldValTrim!DESCRIPTION)
+			V.uGlobal.uReport(v.Local.iUB)!Sales.Set(V.ODBC.con!rst.FieldValFloat!EXTENSION)
+			V.Local.sPart.Set(V.ODBC.con!rst.FieldValTrim!PART)
+			F.Intrinsic.String.Instr(V.Local.sPart,"'",V.Local.iPart)
+			F.Intrinsic.Control.If(V.Local.iPart,>=,1)
+				F.Intrinsic.String.Replace(V.Local.sPart,"'","''",V.Local.sPart)
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.String.Concat("Select * From V_JOB_HEADER Where Part = '",v.Local.sPart,"' and Location = '",v.ODBC.con!rst.FieldValTrim!Location,"' and Date_Closed between '",V.Screen.SS_Form1!dtpFrom.Value.pervasivedate,"' and '",V.Screen.SS_Form1!dtpTo.Value.pervasivedate,"' and qty_completed <> 0 Order By DATE_CLOSED Desc",V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstJOBHIST",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rstJOBHIST.EOF,=,False)
+				F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_MATERIAL,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport(v.Local.iUB)!Material)
+				F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_LABOR,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport(v.Local.iUB)!Labor)
+				F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_OVERHEAD,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport(v.Local.iUB)!Overhead)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.String.Concat("Select * From V_Inventory_Mstr Where Part = '",V.Local.sPart,"' and Location = '",V.ODBC.con!rst.FieldValTrim!Location,"'",V.Local.sSQL)
+				F.ODBC.Connection!con.OpenRecordsetRO("rstINVMAST",V.Local.sSQL)
+				F.Intrinsic.Control.If(V.ODBC.con!rstINVMAST.EOF,=,False)
+					V.uGlobal.uReport(v.Local.iUB)!Material.Set(V.ODBC.con!rstINVMAST.FieldValFloat!AMT_COST)
+					V.uGlobal.uReport(v.Local.iUB)!Labor.Set(0)
+					V.uGlobal.uReport(v.Local.iUB)!Overhead.Set(0)
+				F.Intrinsic.Control.EndIf
+				F.ODBC.con!rstINVMAST.Close
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstJOBHIST.Close
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.MoveNext
+	F.Intrinsic.Control.Loop
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.EndIf
+F.Intrinsic.UI.CloseWaitDialog
+F.Intrinsic.Control.CallSub(Save)
+F.Intrinsic.Control.CallSub(Bi_report)
+
+
+Program.Sub.All_Customers.End
+
+Program.Sub.Save.Start
+V.Local.sSQL.Declare(String)
+
+F.Intrinsic.Control.If(V.uGlobal.uReport.UBound,<>,-1)
+	F.Intrinsic.String.Concat("Select * From GCG_3170_Cost_Sales Where Terminal = '",V.Caller.Terminal,"'",V.Local.sSQL)
+	F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+	F.Intrinsic.Variable.SaveUDTToRecordset("con","rst","V.uGlobal.uReport")
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.EndIf
+
+Program.Sub.Save.End
+
+Program.Sub.Range.Start
+V.Local.sKey.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.iOrd.Declare(Long)
+V.Local.dDate.Declare(Date)
+V.Local.sDateFrom.Declare(String)
+V.Local.sDateTo.Declare(String)
+V.Local.sCustomer.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.ia.Declare(Long)
+V.Local.sCustName.Declare(String)
+V.Local.iUB.Declare(Long)
+V.Local.iPart.Declare(Long)
+V.Local.sPart.Declare(String)
+
+'F.Intrinsic.Debug.InvokeDebugger
+'F.Intrinsic.Debug.Stop
+
+V.Local.iUB.Set(-1)
+V.uGlobal.uCustomer.Redim(-1,-1)
+V.uGlobal.uReport.Redim(-1,-1)
+F.Intrinsic.UI.InvokeWaitDialog("Loading...","Please Wait...")
+F.Intrinsic.Control.If(V.Screen.SS_Form1!dtpFrom.Value,>,V.Screen.SS_Form1!dtpTo.Value)
+	F.Intrinsic.UI.Msgbox("Date range is invalid","Error Message")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+Gui.SS_Form1.lvwGrid.RetrieveAllListItems(V.Local.sKey)
+F.Intrinsic.String.Split(V.Local.sKey,"*!*",V.Local.sKey)
+F.Intrinsic.Control.For(V.Local.i,V.Local.sKey.LBound,V.Local.sKey.UBound,1)
+	F.Intrinsic.UI.ChangeWaitStatus("Loading Customer Range...",V.Local.i,V.Local.sKey.LBound,V.Local.sKey.UBound)
+	Gui.SS_Form1.lvwGrid.ListitemKeyToOrdinal(V.Local.sKey(v.Local.i),V.Local.iOrd)
+	V.Local.sCustomer.Set(V.Screen.SS_Form1!lvwGrid.ListItemTextExtended(v.local.iOrd))
+	F.Intrinsic.String.Split(V.Local.sCustomer,"*!*",V.Local.sCustomer)
+	V.Local.dDate.Set(V.Screen.SS_Form1!dtpFrom.Value)
+	F.Intrinsic.String.Format(V.Local.dDate,"YYYY-MM-DD",V.Local.sDateFrom)
+	V.Local.dDate.Set(V.Screen.SS_Form1!dtpTo.Value)
+	F.Intrinsic.String.Format(V.Local.dDate,"YYYY-MM-DD",V.Local.sDateTo)
+	F.Intrinsic.String.Concat("Select Customer, Name_Customer From V_CUSTOMER_MASTER Where Customer Between '",V.Local.sCustomer(1).Trim,"' and '",V.Local.sCustomer(2).Trim,"'",V.Local.sSQL)
+	F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+		F.Intrinsic.Variable.LoadUDTFromRecordset("con","rst","V.uGlobal.uCustomer",False)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rst.Close
+'F.Intrinsic.Debug.Stop
+	F.Intrinsic.Control.For(V.Local.ia,V.uGlobal.uCustomer.LBound,V.uGlobal.uCustomer.UBound,1)
+		F.Intrinsic.UI.ChangeWaitStatus("Loading the customer data...",V.Local.ia,V.uGlobal.uCustomer.LBound,V.uGlobal.uCustomer.UBound)
+		F.Intrinsic.String.Concat("Select * From V_Order_Hist_Line Where Date_Invoice Between '",V.Local.sDateFrom,"' and '",V.Local.sDateTo,"' and Customer = '",V.uGlobal.uCustomer(v.Local.ia)!Customer.Trim,"' Order by Order_No,Order_Suffix,Order_Line",V.Local.sSQL)
+		F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+				F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+					F.Intrinsic.Control.If(V.uGlobal.uReport.UBound,=,-1)
+						V.uGlobal.uReport.Redim(0,0)
+						V.uGlobal.uReport!Terminal.Set(V.Caller.Terminal)
+						V.uGlobal.uReport!Customer.Set(V.ODBC.con!rst.FieldValTrim!CUSTOMER)
+						F.Intrinsic.Variable.UDTSeek(V.uGlobal.uCustomer!Customer,V.uGlobal.uReport!Customer,0,V.Local.sCustName)
+						V.uGlobal.uReport!Name_Customer.Set(V.uGlobal.uCustomer(v.Local.sCustName.Long)!Name_Customer)
+						V.uGlobal.uReport!Order_No.Set(V.ODBC.con!rst.FieldValTrim!ORDER_NO)
+						V.uGlobal.uReport!Order_Suffix.Set(V.ODBC.con!rst.FieldValTrim!ORDER_SUFFIX)
+						V.uGlobal.uReport!Order_Line.Set(V.ODBC.con!rst.FieldValTrim!ORDER_LINE)
+						V.uGlobal.uReport!Part.Set(V.ODBC.con!rst.FieldValTrim!PART)
+						V.uGlobal.uReport!Location.Set(V.ODBC.con!rst.FieldValTrim!LOCATION)
+						V.uGlobal.uReport!Description.Set(V.ODBC.con!rst.FieldValTrim!DESCRIPTION)
+						V.uGlobal.uReport!Sales.Set(V.ODBC.con!rst.FieldValFloat!EXTENSION)
+'F.Intrinsic.Debug.Stop
+						V.Local.sPart.Set(V.ODBC.con!rst.FieldValTrim!PART)
+						F.Intrinsic.String.Instr(V.Local.sPart,"'",V.Local.iPart)
+						F.Intrinsic.Control.If(V.Local.iPart,>=,1)
+							F.Intrinsic.String.Replace(V.Local.sPart,"'","''",V.Local.sPart)
+						F.Intrinsic.Control.EndIf
+
+						F.Intrinsic.String.Concat("Select * From V_JOB_HEADER Where Part = '",V.Local.sPart,"' and Location = '",V.ODBC.con!rst.FieldValTrim!Location,"' and Date_Closed between '",V.Local.sDateFrom,"' and '",V.Local.sDateTo,"' and qty_completed <> 0 Order By DATE_CLOSED Desc",V.Local.sSQL)
+						F.ODBC.Connection!con.OpenRecordsetRO("rstJOBHIST",V.Local.sSQL)
+						F.Intrinsic.Control.If(V.ODBC.con!rstJOBHIST.EOF,=,False)
+							F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_MATERIAL,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport!Material)
+							F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_LABOR,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport!Labor)
+							F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_OVERHEAD,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport!Overhead)
+						F.Intrinsic.Control.Else
+							F.Intrinsic.String.Concat("Select * From V_Inventory_Mstr Where Part = '",V.Local.sPart,"' and Location = '",V.ODBC.con!rst.FieldValTrim!Location,"'",V.Local.sQuery)
+							F.ODBC.Connection!con.OpenRecordsetRO("rstINVMAST",V.Local.sQuery)
+							F.Intrinsic.Control.If(V.ODBC.con!rstINVMAST.EOF,=,False)
+								V.uGlobal.uReport!Material.Set(V.ODBC.con!rstINVMAST.FieldValFloat!AMT_COST)
+								V.uGlobal.uReport!Labor.Set(0)
+								V.uGlobal.uReport!Overhead.Set(0)
+							F.Intrinsic.Control.EndIf
+							F.ODBC.con!rstINVMAST.Close
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rstJOBHIST.Close
+					F.Intrinsic.Control.Else
+						V.Local.iUB.Set(V.uGlobal.uReport.UBound)
+						F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+						V.uGlobal.uReport.RedimPreserve(V.uGlobal.uReport.LBound,V.Local.iUB)
+						V.uGlobal.uReport(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+						V.uGlobal.uReport(V.Local.iUB)!Customer.Set(V.ODBC.con!rst.FieldValTrim!CUSTOMER)
+						F.Intrinsic.Variable.UDTSeek(V.uGlobal.uCustomer!Customer,V.uGlobal.uReport(v.Local.iUB)!Customer,0,V.Local.sCustName)
+						V.uGlobal.uReport(v.Local.iUB)!Name_Customer.Set(V.uGlobal.uCustomer(v.Local.sCustName)!Name_Customer)
+						V.uGlobal.uReport(V.Local.iUB)!Order_No.Set(V.ODBC.con!rst.FieldValTrim!ORDER_NO)
+						V.uGlobal.uReport(V.Local.iUB)!Order_Suffix.Set(V.ODBC.con!rst.FieldValTrim!ORDER_SUFFIX)
+						V.uGlobal.uReport(V.Local.iUB)!Order_Line.Set(V.ODBC.con!rst.FieldValTrim!ORDER_LINE)
+						V.uGlobal.uReport(V.Local.iUB)!Part.Set(V.ODBC.con!rst.FieldValTrim!PART)
+						V.uGlobal.uReport(v.Local.iUB)!Location.Set(V.ODBC.con!rst.FieldValTrim!LOCATION)
+						V.uGlobal.uReport(V.Local.iUB)!Description.Set(V.ODBC.con!rst.FieldValTrim!DESCRIPTION)
+						V.uGlobal.uReport(v.Local.iUB)!Sales.Set(V.ODBC.con!rst.FieldValFloat!EXTENSION)
+'F.Intrinsic.Debug.Stop
+						V.Local.sPart.Set(V.ODBC.con!rst.FieldValTrim!PART)
+						F.Intrinsic.String.Instr(V.Local.sPart,"'",V.Local.iPart)
+						F.Intrinsic.Control.If(V.Local.iPart,>=,1)
+						F.Intrinsic.String.Replace(V.Local.sPart,"'","''",V.Local.sPart)
+						F.Intrinsic.Control.EndIf
+
+						F.Intrinsic.String.Concat("Select * From V_JOB_HEADER Where Part = '",V.Local.sPart,"' and Location = '",V.ODBC.con!rst.FieldValTrim!Location,"' and Date_Closed between '",V.Local.sDateFrom,"' and '",V.Local.sDateTo,"' and qty_completed <> 0 Order By DATE_CLOSED Desc",V.Local.sSQL)
+						F.ODBC.Connection!con.OpenRecordsetRO("rstJOBHIST",V.Local.sSQL)
+						F.Intrinsic.Control.If(V.ODBC.con!rstJOBHIST.EOF,=,False)
+							F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_MATERIAL,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport(v.Local.iUB)!Material)
+							F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_LABOR,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport(v.Local.iUB)!Labor)
+							F.Intrinsic.Math.Div(V.ODBC.con!rstJOBHIST.FieldValFloat!AMT_OVERHEAD,V.ODBC.con!rstJOBHIST.FieldValFloat!QTY_COMPLETED,V.uGlobal.uReport(v.Local.iUB)!Overhead)
+						F.Intrinsic.Control.Else
+							F.Intrinsic.String.Concat("Select * From V_Inventory_Mstr Where Part = '",V.Local.sPart,"' and Location = '",V.ODBC.con!rst.FieldValTrim!Location,"'",V.Local.sQuery)
+							F.ODBC.Connection!con.OpenRecordsetRO("rstINVMAST",V.Local.sQuery)
+							F.Intrinsic.Control.If(V.ODBC.con!rstINVMAST.EOF,=,False)
+								V.uGlobal.uReport(v.Local.iUB)!Material.Set(V.ODBC.con!rstINVMAST.FieldValFloat!AMT_COST)
+								V.uGlobal.uReport(v.Local.iUB)!Labor.Set(0)
+								V.uGlobal.uReport(v.Local.iUB)!Overhead.Set(0)
+							F.Intrinsic.Control.EndIf
+							F.ODBC.con!rstINVMAST.Close
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rstJOBHIST.Close
+					F.Intrinsic.Control.EndIf
+					F.ODBC.con!rst.MoveNext
+				F.Intrinsic.Control.Loop
+				F.ODBC.con!rst.Close
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.ia)
+F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.UI.CloseWaitDialog
+F.Intrinsic.Control.CallSub(Save)
+F.Intrinsic.Control.CallSub(Bi_report)
+
+
+Program.Sub.Range.End
+
+Program.Sub.Enable.Start
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chkAll.Value,=,1)
+	Gui.SS_Form1.cmd_lvwGridAdd.Enabled(False)
+	Gui.SS_Form1.cmd_lvwGridClear.Enabled(False)
+	Gui.SS_Form1.cmd_lvwGridDelete.Enabled(False)
+	Gui.SS_Form1.cmd_txtFrom.Enabled(False)
+	Gui.SS_Form1.cmd_txtTo.Enabled(False)
+	Gui.SS_Form1.txtFrom.Enabled(False)
+	Gui.SS_Form1.txtTo.Enabled(False)
+	Gui.SS_Form1.lvwGrid.Enabled(False)
+	Gui.SS_Form1.lbl_txtFrom.Enabled(False)
+	Gui.SS_Form1.lbl_txtTo.Enabled(False)
+F.Intrinsic.Control.Else
+	Gui.SS_Form1.cmd_lvwGridAdd.Enabled(True)
+	Gui.SS_Form1.cmd_lvwGridClear.Enabled(True)
+	Gui.SS_Form1.cmd_lvwGridDelete.Enabled(True)
+	Gui.SS_Form1.cmd_txtFrom.Enabled(True)
+	Gui.SS_Form1.cmd_txtTo.Enabled(True)
+	Gui.SS_Form1.txtFrom.Enabled(True)
+	Gui.SS_Form1.txtTo.Enabled(True)
+	Gui.SS_Form1.lvwGrid.Enabled(True)
+	Gui.SS_Form1.lbl_txtFrom.Enabled(True)
+	Gui.SS_Form1.lbl_txtTo.Enabled(True)
+F.Intrinsic.Control.EndIf
+
+Program.Sub.Enable.End
+
+Program.Sub.BI_Report.Start
+V.Local.sParam.Declare(String)
+V.Local.sParamVal.Declare(String)
+V.Local.iReport.Declare(Long)
+V.Local.sReportName.Declare(String)
+V.Local.dStartdate.Declare(Date)
+V.Local.dEndDate.Declare(Date)
+V.Local.sStartdate.Declare(String)
+V.Local.sEndDate.Declare(String)
+V.Local.sName.Declare(String)
+
+'F.Intrinsic.Debug.InvokeDebugger
+'F.Intrinsic.Debug.Stop
+
+'
+'V.Local.sParamVal.Set(V.Caller.Terminal)
+'V.Local.sStartdate.Set("StartDate")
+V.Local.dStartdate.Set(V.Screen.SS_Form1!dtpFrom.Value)
+'V.Local.sEndDate.Set("EndDate")
+V.Local.dEndDate.Set(V.Screen.SS_Form1!dtpTo.Value)
+V.Local.sParam.Set("Terminal*!*Startdate*!*Enddate")
+F.Intrinsic.String.Concat(V.Caller.Terminal,"*!*",V.Local.dStartdate,"*!*",V.Local.dEndDate,V.Local.sParamVal)
+F.Intrinsic.String.Split(V.Local.sParam,"*!*",V.Local.sParam)
+F.Intrinsic.String.Split(V.Local.sParamVal,"*!*",V.Local.sParamVal)
+F.Intrinsic.String.Concat(V.Caller.BusintDir,"\CUSTOM\GCG_3170_COST_SALES.rpt",V.Local.sReportName)
+F.Global.BI.InitializeReport("Cost of Goods Report",V.Local.sReportName,V.Local.iReport)
+'F.Global.BI.GetIDFromName("Part_Demand_Report.rpt",V.Local.iReport)
+F.Global.BI.PrintReport(V.Local.iReport,0,V.Local.sParam,V.Local.sParamVal,"",False)
+
+Program.Sub.BI_Report.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_Cost_Sales$}$ERIC$}$1/27/2012
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Cost of Sales
+SS_Form1.CTRL{{NAME::dtpFrom\\TYPE::6\\CAPTION::From\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::dtpTo\\TYPE::6\\CAPTION::To\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txtFrom\\TYPE::2\\CAPTION::From\\RANGE::lvwGrid\\GROUP::2\\BROWSER::1\\SIZE::1
+SS_Form1.CTRL{{NAME::txtTo\\TYPE::2\\CAPTION::To\\RANGE::lvwGrid\\GROUP::2\\BROWSER::1\\SIZE::1
+SS_Form1.CTRL{{NAME::lvwGrid\\TYPE::7\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::chkAll\\TYPE::9\\CAPTION::All Customers\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::cmdOk\\TYPE::5\\CAPTION::Submit\\GROUP::-1\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
